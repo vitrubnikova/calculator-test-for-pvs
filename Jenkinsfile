@@ -22,10 +22,18 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline выполнен успешно!'
+            emailext (
+                subject: 'SUCCESS: Job ${env.JOB_NAME}',
+                body: 'Build успешно завершен!',
+                to: 'vitrubnikova@gmail.com'
+            )
         }
         failure {
-            echo 'Pipeline завершился с ошибкой.'
+            emailext (
+                subject: 'FAILURE: Job ${env.JOB_NAME}',
+                body: 'Build завершился с ошибкой!',
+                to: 'vitrubnikova@gmail.com'
+            )
         }
     }
 }
