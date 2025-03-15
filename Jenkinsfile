@@ -18,16 +18,6 @@ pipeline {
                 }
             }
         }
-
-        // Этап 3: Очистка (опционально)
-        stage('Cleanup') {
-            steps {
-                script {
-                    // Удаляем промежуточные образы
-                    sh 'docker system prune -f'
-                }
-            }
-        }
     }
 
     post {
