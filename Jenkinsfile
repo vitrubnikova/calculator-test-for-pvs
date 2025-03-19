@@ -15,6 +15,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Debug') {
+            steps {
+                script {
+                    echo "JOB_NAME: ${env.JOB_NAME}"
+                }
+            }
+        }
     }
 
     post {
