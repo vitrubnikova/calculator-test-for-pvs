@@ -20,7 +20,7 @@ pipeline {
     post {
         success {
             script {
-                telegramSend(message: 'Hello World', chatId: -4798858408)
+                telegramSend(message: 'Hello World', chatId: -1002692844621)
             }
         }
         failure {
