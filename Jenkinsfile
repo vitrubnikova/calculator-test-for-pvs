@@ -17,7 +17,7 @@ pipeline {
         }
     }
 
-    post post {
+    post {
         success {
             emailext (
                 subject: 'SUCCESS: Job ${env.JOB_NAME}',
