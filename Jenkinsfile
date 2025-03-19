@@ -25,7 +25,7 @@ pipeline {
         }
         failure {
             script {
-                telegramSend 'Hello World'
+                telegramSend message: 'Build failed!'
             }
         }
     }
