@@ -20,26 +20,12 @@ pipeline {
     post {
         success {
             script {
-                telegramSend (
-                    message: """
-                        ✅ Сборка успешно завершена!
-                        Job: ${env.JOB_NAME}
-                        Build: ${env.BUILD_NUMBER}
-                        Подробности: ${env.BUILD_URL}
-                    """
-                )
+                telegramSend(message: 'Hello World', chatId: "@jenkinsnotify")
             }
         }
         failure {
             script {
-                telegramSend (
-                    message: """
-                        ❌ Сборка завершилась с ошибкой!
-                        Job: ${env.JOB_NAME}
-                        Build: ${env.BUILD_NUMBER}
-                        Подробности: ${env.BUILD_URL}
-                    """
-                )
+                telegramSend 'Hello World'
             }
         }
     }
