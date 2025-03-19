@@ -7,6 +7,7 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/vitrubnikova/calculator-test-for-pvs.git'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 script {
@@ -16,19 +17,30 @@ pipeline {
         }
     }
 
-    post {
+    post post {
         success {
             emailext (
                 subject: 'SUCCESS: Job ${env.JOB_NAME}',
-                body: 'Build успешно завершен!',
+                body: '''
+                    Сборка успешно завершена!
+                    Job: ${env.JOB_NAME}
+                    Build: ${env.BUILD_NUMBER}
+                    Подробности: ${env.BUILD_URL}
+                ''',
                 to: 'vitrubnikova@gmail.com'
             )
         }
         failure {
             emailext (
                 subject: 'FAILURE: Job ${env.JOB_NAME}',
-                body: 'Build завершился с ошибкой!',
+                body: '''
+                    Сборка завершилась с ошибкой!
+                    Job: ${env.JOB_NAME}
+                    Build: ${env.BUILD_NUMBER}
+                    Подробности: ${env.BUILD_URL}
+                ''',
                 to: 'vitrubnikova@gmail.com'
             )
         }
     }
+}
