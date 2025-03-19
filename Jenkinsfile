@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/vitrubnikova/calculator-test-for-pvs.git'
+                git branch: 'test', url: 'https://github.com/vitrubnikova/calculator-test-for-pvs.git'
             }
         }
 
